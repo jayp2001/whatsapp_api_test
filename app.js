@@ -3,7 +3,15 @@ const port = process.env.PORT || 9000;
 const express = require('express');
 const fs = require('fs');
 
-const file = fs.readFileSync('./BF8D769FE83A40712AC4D2C69B355CCC.txt')
+const key = fs.readFileSync('./private.key');
+const cert = fs.readFileSync('./certificate.crt')
+
+// const file = fs.readFileSync('./BF8D769FE83A40712AC4D2C69B355CCC.txt')
+
+const cred = {
+    key,
+    cert
+}
 
 let indexRoutes = require('./routes/index.js');
 
@@ -19,5 +27,8 @@ const main = async () => {
     app.listen(port, () =>
         console.log(`App now running and listening on port ${port}`)
     );
+
+    const httpsServer = https. createServer (cred, app)
+    httpsServer. listen (8443)
 };
 main();
