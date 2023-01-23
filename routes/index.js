@@ -1,6 +1,10 @@
 'use strict';
 const router = require('express').Router();
 
+router.get('/hello',(req,res)=>{
+    res.json("hello world")
+})
+
 router.get('/meta_wa_callbackurl', (req, res) => {
     try {
         console.log('GET: Someone is pinging me!');
