@@ -86,7 +86,7 @@ class WhatsappCloud {
                             let errorObject = () => {
                                 try {
                                     return (
-                                        res.body?.error ||
+                                        res.body && res.body.error ||
                                         JSON.parse(res.raw_body)
                                     );
                                 } catch (e) {
@@ -260,7 +260,7 @@ class WhatsappCloud {
 
             return response;
         } catch (error) {
-            let msg = error?.error_data?.details;
+            let msg = error&&error.error_data&&error.error_data.details;
             if (msg && msg.includes('last-seen message in this conversation')) {
                 //ignore error anyway: If message is already read or has already been deleted - since whatever the error it is non-retryable.
                 return {
@@ -357,7 +357,7 @@ class WhatsappCloud {
         let validSections = listOfSections
             .map((section) => {
                 let title = section.title;
-                let rows = section.rows?.map((row) => {
+                let rows = section.rows&&section.rows.map((row) => {
                     if (!row.id) {
                         throw new Error(
                             '"row.id" of an item is required in list of radio buttons.'
@@ -692,7 +692,7 @@ class WhatsappCloud {
         };
 
         let format_email = (email) => {
-            if (!email || !email?.email) {
+            if (!email || !(email&&email.email)) {
                 return {};
             }
 
@@ -705,7 +705,7 @@ class WhatsappCloud {
         };
 
         let format_name = (name) => {
-            if (!name || !name?.first_name || !name?.last_name) {
+            if (!name || !(name&&name.first_name) || !(name&&name.last_name)) {
                 throw new Error(
                     'Provide both "name.first_name" and "name.last_name".'
                 );
@@ -731,7 +731,7 @@ class WhatsappCloud {
         };
 
         let format_org = (org) => {
-            if (!org || !org?.company) {
+            if (!org || !(org&&org.company)) {
                 return {};
             }
             let org_obj = {
@@ -744,7 +744,7 @@ class WhatsappCloud {
         };
 
         let format_phone = (phone) => {
-            if (!phone || !phone?.phone) {
+            if (!phone || !(phone&&phone.phone)) {
                 return {};
             }
             let phone_obj = {
@@ -757,7 +757,7 @@ class WhatsappCloud {
         };
 
         let format_url = (url) => {
-            if (!url || !url?.url) {
+            if (!url || !(url&&url.url)) {
                 return {};
             }
             let url_obj = {
