@@ -6,7 +6,7 @@ const Whatsapp = new WhatsappCloudAPI({
     accessToken: process.env.Meta_WA_accessToken,
     senderPhoneNumberId: process.env.Meta_WA_SenderPhoneNumberId,
     WABA_ID: process.env.Meta_WA_wabaId, 
-    graphAPIVersion: 'v13.0'
+    graphAPIVersion: 'v15.0'
 });
 
 router.get('/hello',(req,res)=>{
@@ -42,6 +42,7 @@ router.get('/meta_wa_callbackurl', (req, res) => {
 
 
 router.post('/meta_wa_callbackurl', async (req, res) => {
+    console.log(">>><<<")
     try {
         console.log('POST: Someone is pinging me!');
 
