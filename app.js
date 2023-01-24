@@ -5,7 +5,7 @@ const fs = require('fs');
 const https = require ('https')
 
 const key = fs.readFileSync('./private.key');
-const cert = fs.readFileSync('./certificate.crt')
+const cert = fs.readFileSync('./13.231.115.90_cert.crt')
 
 // const file = fs.readFileSync('./BF8D769FE83A40712AC4D2C69B355CCC.txt')
 
