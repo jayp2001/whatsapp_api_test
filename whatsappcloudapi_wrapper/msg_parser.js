@@ -12,7 +12,7 @@ module.exports = ({ requestBody, currentWABA_ID }) => {
         );
     }
 
-    let WABA_ID = requestBody.entry[0]?.id; // extract the business ID from the webhook payload
+    let WABA_ID = requestBody.entry[0].id; // extract the business ID from the webhook payload
     if (WABA_ID == 0) {
         signale.warn({
             message: `WABA_ID is 0. You seem to be testing with Meta test subscription. This is not really a valid WABA_ID. I recommend you to send an actual message from an actual whatsapp customer's number.`,
@@ -35,14 +35,14 @@ module.exports = ({ requestBody, currentWABA_ID }) => {
         );
     }
 
-    if (!requestBody.entry || !requestBody.entry?.length) {
+    if (!requestBody.entry || !requestBody.entry.length) {
         throw new Error(
             'requestBody is not a valid whatsapp message. Hint: check the "entry" property'
         );
     }
 
     if (
-        !requestBody.entry[0].changes?.length ||
+        !requestBody.entry[0].changes.length ||
         requestBody.entry[0].changes[0].field !== 'messages'
     ) {
         throw new Error(
@@ -51,17 +51,17 @@ module.exports = ({ requestBody, currentWABA_ID }) => {
     }
 
     let metadata = requestBody.entry[0].changes[0].value.metadata;
-    let contacts = requestBody.entry[0].changes[0].value.contacts?.length
+    let contacts = requestBody.entry[0].changes[0].value.contacts.length
         ? requestBody.entry[0].changes[0].value.contacts[0]
         : null;
 
     // Messages vs Notifications
-    let message = requestBody.entry[0].changes[0].value?.messages?.length
+    let message = requestBody.entry[0].changes[0].value.messages.length
         ? requestBody.entry[0].changes[0].value.messages[0]
         : null;
 
-    let notificationMessage = requestBody.entry[0].changes[0].value?.statuses
-        ?.length
+    let notificationMessage = requestBody.entry[0].changes[0].value.statuses
+        .length
         ? requestBody.entry[0].changes[0].value.statuses[0]
         : null;
 
@@ -99,16 +99,16 @@ module.exports = ({ requestBody, currentWABA_ID }) => {
         } else if (message.type === 'button') {
             msgType = 'quick_reply_message';
         } else if (message.type === 'interactive') {
-            if (message.interactive?.type === 'list_reply') {
+            if (message.interactive.type === 'list_reply') {
                 msgType = 'radio_button_message';
                 message['list_reply'] = message.interactive.list_reply;
-            } else if (message.interactive?.type === 'button_reply') {
+            } else if (message.interactive.type === 'button_reply') {
                 msgType = 'simple_button_message';
                 message['button_reply'] = message.interactive.button_reply;
             }
         } else if (message.type === 'unsupported') {
             msgType = 'unknown_message';
-            if (message.errors?.length) {
+            if (message.errors.length) {
                 console.log({ Q: message.errors });
                 output['isNotificationMessage'] = true;
                 output['isMessage'] = false;
@@ -120,7 +120,7 @@ module.exports = ({ requestBody, currentWABA_ID }) => {
         message['type'] = msgType;
         message['from'] = {
             name: contacts.profile.name,
-            phone: message?.from,
+            phone: message.from,
         };
 
         if (output.isMessage) {
@@ -130,8 +130,8 @@ module.exports = ({ requestBody, currentWABA_ID }) => {
                 thread = {
                     from: {
                         name: null,
-                        phone: message.context?.from,
-                        message_id: message.context?.id,
+                        phone: message.context.from,
+                        message_id: message.context.id,
                     },
                 };
             }
