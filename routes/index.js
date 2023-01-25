@@ -46,39 +46,39 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
     try {
         console.log('POST: Someone is pinging me!');
 
-        let data = Whatsapp.parseMessage(req.body);
+    //     let data = Whatsapp.parseMessage(req.body);
 
-        if (data && data.isMessage) {
-            let incomingMessage = data.message;
-            let recipientPhone = incomingMessage.from.phone; // extract the phone number of sender
-            let recipientName = incomingMessage.from.name;
-            let typeOfMsg = incomingMessage.type; // extract the type of message (some are text, others are images, others are responses to buttons etc...)
-            let message_id = incomingMessage.message_id; // extract the message id
+    //     if (data && data.isMessage) {
+    //         let incomingMessage = data.message;
+    //         let recipientPhone = incomingMessage.from.phone; // extract the phone number of sender
+    //         let recipientName = incomingMessage.from.name;
+    //         let typeOfMsg = incomingMessage.type; // extract the type of message (some are text, others are images, others are responses to buttons etc...)
+    //         let message_id = incomingMessage.message_id; // extract the message id
 
-            if (typeOfMsg === 'text_message') {
-                await Whatsapp.sendSimpleButtons({
-                    message: `Hey ${recipientName}, \nYou are speaking to a chatbot.\nWhat do you want to do next?`,
-                    recipientPhone: recipientPhone, 
-                    listOfButtons: [
-                        {
-                            title: 'Send PDF',
-                            id: 'send_pdf',
-                        },
-                    ],
-                });
-            }
+    //         if (typeOfMsg === 'text_message') {
+    //             await Whatsapp.sendSimpleButtons({
+    //                 message: `Hey ${recipientName}, \nYou are speaking to a chatbot.\nWhat do you want to do next?`,
+    //                 recipientPhone: recipientPhone, 
+    //                 listOfButtons: [
+    //                     {
+    //                         title: 'Send PDF',
+    //                         id: 'send_pdf',
+    //                     },
+    //                 ],
+    //             });
+    //         }
 
-            if (typeOfMsg === 'simple_button_message') {
-                let button_id = incomingMessage.button_reply.id;
+    //         if (typeOfMsg === 'simple_button_message') {
+    //             let button_id = incomingMessage.button_reply.id;
             
-                if (button_id === 'send_pdf') {
-                    await Whatsapp.sendDocument({
-                        recipientPhone: "9825312229",
-                        file_path: `../document_recipt/recipte.pdf`,
-                    });
-                }
-            };
-    }
+    //             if (button_id === 'send_pdf') {
+    //                 await Whatsapp.sendDocument({
+    //                     recipientPhone: "9825312229",
+    //                     file_path: `../document_recipt/recipte.pdf`,
+    //                 });
+    //             }
+    //         };
+    // }
 
         return res.sendStatus(200);
     } catch (error) {
