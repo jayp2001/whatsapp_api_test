@@ -119,7 +119,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                 res.sendStatus(200)
                 )
                .catch(
-                res.sendStatus(504)
+                
                )
             }else{
                 res.sendStatus(404);
