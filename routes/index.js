@@ -99,25 +99,24 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                console.log("phone number "+phon_no_id);
                console.log("from "+from);
                console.log("boady param "+msg_body);
-                try{axios({
-                    method:"POST",
-                    url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+'EAAZA6LBt0ZBJQBAC7UP00V7AZA2iJlUGLPZBf1zDS3MDZCznHABDXr2SnN2iJLxIOw0NJZCooWUHFzi0KORYyY75lYXTAgSiqTavPw67VwZCdM1ld7YGSHaB0DQXESjIHFhM98cSQDusysLwLWjHXmpXv8WG71yP7GG8O6gk6JJoAgluGS5bj7XZC91a1BXVhRWm8hzi9Ew2DgZDZD',
-                    data:{
-                        messaging_product:"whatsapp",
-                        to:from,
-                        text:{
-                            body:"Hi.. I'm Prasath, your message is "+msg_body
-                        }
-                    },
-                    headers:{
-                        "Content-Type":"application/json"
-                    }
- 
-                });
-                res.sendStatus(200);
-            } catch{
-                res.sendStatus(504);
-            }
+                
+               axios({
+                   method:"POST",
+                   url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+'EAAZA6LBt0ZBJQBAC7UP00V7AZA2iJlUGLPZBf1zDS3MDZCznHABDXr2SnN2iJLxIOw0NJZCooWUHFzi0KORYyY75lYXTAgSiqTavPw67VwZCdM1ld7YGSHaB0DQXESjIHFhM98cSQDusysLwLWjHXmpXv8WG71yP7GG8O6gk6JJoAgluGS5bj7XZC91a1BXVhRWm8hzi9Ew2DgZDZD',
+                   data:{
+                       messaging_product:"whatsapp",
+                       to:from,
+                       text:{
+                           body:"Hi.. I'm Prasath, your message is "+msg_body
+                       }
+                   },
+                   headers:{
+                       "Content-Type":"application/json"
+                   }
+
+               });
+
+               res.sendStatus(200);
             }else{
                 res.sendStatus(404);
             }
