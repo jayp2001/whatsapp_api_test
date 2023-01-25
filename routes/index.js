@@ -42,7 +42,7 @@ router.get('/meta_wa_callbackurl', (req, res) => {
 
 
 
-router.post('/meta_wa_callbackurl', async (req, res) => {
+router.post('/meta_wa_callbackurl', (req, res) => {
     console.log(">>><<<")
     try {
         console.log('POST: Someone is pinging me!');
