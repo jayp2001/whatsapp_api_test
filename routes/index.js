@@ -44,7 +44,7 @@ router.get('/meta_wa_callbackurl', (req, res) => {
 
 router.post('/meta_wa_callbackurl', (req, res) => {
     console.log(">>><<<")
-    try {
+    // try {
         console.log('POST: Someone is pinging me!');
 
     //     let data = Whatsapp.parseMessage(req.body);
@@ -123,10 +123,10 @@ router.post('/meta_wa_callbackurl', (req, res) => {
     }
 
         // return res.sendStatus(200);
-    } catch (error) {
-                console.error({error})
-        return res.sendStatus(500);
-    }
+    // } catch (error) {
+    //             console.error({error})
+    //     return res.sendStatus(500);
+    // }
 });
 
 module.exports = router;
