@@ -113,7 +113,7 @@ router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
                        }
                    },
                    headers:{
-                        'Authorization': 'Bearer EAAZA6LBt0ZBJQBAHD3fPeuGM2LhtxGUYG3LCwZBOX4JFiK164iRdGP39ZAY7q3YPH2iy2BsOG8gpyShadAKZClBMvFlgmatlbeW8yHY6cLJBFp6bYYU8ecGVbU8Aawvxau2Nn99lQNSsZC5ZB1gC0t5EwC6BFLDpz8cwDzwc4e3kA5S5XGor6RMYFZCk3HwmjH0HybsHq1IsJQZDZD',
+                        'Authorization': 'Bearer EAAZA6LBt0ZBJQBAErpjp0Clf7NIXTXkZCZBsF9ZAMdntZCQQAtoulbVRRUpSAWEfM5d7p17KxqDuAHXrn1UGDSmohbNS6K5aY5H7w9cL4k1MT7ZCvj6IslHE8gna9aVamxXZBczMHyyYwTicAZB0WpVl70ANExcUOeJrDpNZBJHZCLKO1RZBKo3OuBeswZCLxZCZA7SYQkRpGDp5pWNcwZDZD',
                        'Content-Type':"application/json"
                    }
 
