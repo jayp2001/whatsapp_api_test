@@ -1,5 +1,6 @@
 'use strict';
 const router = require('express').Router();
+const asyncHandler = require('express-async-handler');
 const axios=require("axios");
 
 // const WhatsappCloudAPI = require('../whatsappcloudapi_wrapper');
@@ -42,9 +43,9 @@ router.get('/meta_wa_callbackurl', (req, res) => {
 
 
 
-router.post('/meta_wa_callbackurl', async(req, res) => {
+router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
     console.log(">>><<<")
-    // try {
+    try {
         console.log('POST: Someone is pinging me!');
 
     //     let data = Whatsapp.parseMessage(req.body);
@@ -81,9 +82,9 @@ router.post('/meta_wa_callbackurl', async(req, res) => {
     //         };
     // }
 
-    let body_param=req.body;
+    // let body_param=req.body;
 
-    console.log(JSON.stringify(body_param,null,2));
+    // console.log(JSON.stringify(body_param,null,2));
 
     if(body_param.object){
         console.log("inside body param");
@@ -122,11 +123,11 @@ router.post('/meta_wa_callbackurl', async(req, res) => {
 
     }
 
-        // return res.sendStatus(200);
-    // } catch (error) {
-    //             console.error({error})
-    //     return res.sendStatus(500);
-    // }
-});
+        return res.sendStatus(200);
+    } catch (error) {
+                console.error({error})
+        return res.sendStatus(500);
+    }
+}));
 
 module.exports = router;
