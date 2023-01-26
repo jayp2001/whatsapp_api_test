@@ -125,7 +125,7 @@ router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
 
     }
 
-        return res.sendStatus(200);
+        // return res.sendStatus(200);
     } catch (error) {
                 console.error({error})
         return res.sendStatus(500);
