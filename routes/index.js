@@ -82,9 +82,9 @@ router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
     //         };
     // }
 
-    // let body_param=req.body;
+    let body_param=req.body;
 
-    // console.log(JSON.stringify(body_param,null,2));
+    console.log(JSON.stringify(body_param,null,2));
 
     if(body_param.object){
         console.log("inside body param");
