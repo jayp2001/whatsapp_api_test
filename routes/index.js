@@ -103,7 +103,8 @@ router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
                 
               await axios({
                    method:"POST",
-                   url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages?access_token="+'EAAZA6LBt0ZBJQBAC7UP00V7AZA2iJlUGLPZBf1zDS3MDZCznHABDXr2SnN2iJLxIOw0NJZCooWUHFzi0KORYyY75lYXTAgSiqTavPw67VwZCdM1ld7YGSHaB0DQXESjIHFhM98cSQDusysLwLWjHXmpXv8WG71yP7GG8O6gk6JJoAgluGS5bj7XZC91a1BXVhRWm8hzi9Ew2DgZDZD',
+                   url:"https://graph.facebook.com/v15.0/105954558954427/messages",
+                //    url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages?access_token="+'EAAZA6LBt0ZBJQBAC7UP00V7AZA2iJlUGLPZBf1zDS3MDZCznHABDXr2SnN2iJLxIOw0NJZCooWUHFzi0KORYyY75lYXTAgSiqTavPw67VwZCdM1ld7YGSHaB0DQXESjIHFhM98cSQDusysLwLWjHXmpXv8WG71yP7GG8O6gk6JJoAgluGS5bj7XZC91a1BXVhRWm8hzi9Ew2DgZDZD',
                    data:{
                        messaging_product:"whatsapp",
                        to:from,
@@ -112,7 +113,8 @@ router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
                        }
                    },
                    headers:{
-                       "Content-Type":"application/json"
+                        'Authorization': 'Bearer EAAZA6LBt0ZBJQBAHD3fPeuGM2LhtxGUYG3LCwZBOX4JFiK164iRdGP39ZAY7q3YPH2iy2BsOG8gpyShadAKZClBMvFlgmatlbeW8yHY6cLJBFp6bYYU8ecGVbU8Aawvxau2Nn99lQNSsZC5ZB1gC0t5EwC6BFLDpz8cwDzwc4e3kA5S5XGor6RMYFZCk3HwmjH0HybsHq1IsJQZDZD',
+                       'Content-Type':"application/json"
                    }
 
                })
