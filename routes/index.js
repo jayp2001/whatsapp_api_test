@@ -103,7 +103,7 @@ router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
                 
               await axios({
                    method:"POST",
-                   url:"https://graph.facebook.com/v15.0/105954558954427/messages",
+                   url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages/",
                 //    url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages?access_token="+'EAAZA6LBt0ZBJQBAC7UP00V7AZA2iJlUGLPZBf1zDS3MDZCznHABDXr2SnN2iJLxIOw0NJZCooWUHFzi0KORYyY75lYXTAgSiqTavPw67VwZCdM1ld7YGSHaB0DQXESjIHFhM98cSQDusysLwLWjHXmpXv8WG71yP7GG8O6gk6JJoAgluGS5bj7XZC91a1BXVhRWm8hzi9Ew2DgZDZD',
                    data:{
                        messaging_product:"whatsapp",
