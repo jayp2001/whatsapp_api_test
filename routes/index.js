@@ -2,7 +2,9 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const axios=require("axios");
+const fs = require('fs')
 require('dotenv').config();
+// import t from '../document_recipt/'
 
 const token=process.env.Meta_WA_accessToken;
 // const WhatsappCloudAPI = require('../whatsappcloudapi_wrapper');
@@ -14,7 +16,12 @@ const token=process.env.Meta_WA_accessToken;
 // });
 
 router.get('/hello',(req,res)=>{
-    res.json("hello world !!!")
+    console.log(__dirname)
+    // var data =fs.readFileSync('/Users/jayparmar/Desktop/whatsapp/document_recipt/recipte_test.pdf');
+    var data =fs.readFileSync('/home/ubuntu/whatsapp_api_test/document_recipt/recipte_test.pdf');
+res.contentType("application/pdf");
+res.send(data);
+    // res.sendFile("/home/ubuntu/whatsapp_api_test/document_recipt/recipte_test.pdf")
 })
 
 router.get('/meta_wa_callbackurl', (req, res) => {
