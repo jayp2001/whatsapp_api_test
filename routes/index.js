@@ -120,7 +120,7 @@ router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
                            body:"Hi.. I'm jay, your message is "+msg_body
                        },
                        document: {
-                        link: "/home/ubuntu/whatsapp_api_test/document_recipt/recipte_test.pdf",
+                        link: "https://13.231.115.90/hello",
                         caption: "your-document-caption"
                       }
                    },
