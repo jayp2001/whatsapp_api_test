@@ -2,7 +2,8 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const axios=require("axios");
-const fs = require('fs')
+const fs = require('fs');
+const { type } = require('os');
 require('dotenv').config();
 // import t from '../document_recipt/'
 
@@ -116,13 +117,15 @@ router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
                    data:{
                        messaging_product:"whatsapp",
                        to:from,
-                       text:{
-                           body:"Hi.. I'm jay, your message is "+msg_body
-                       },
+                       type:"document",
+                    //    text:{
+                    //        body:"Hi.. I'm jay, your message is "+msg_body
+                    //    },
                        document: {
                         link: "https://13.231.115.90/hello",
                         caption: "your-document-caption"
                       }
+                      
                    },
                    headers:{
                         'Authorization': 'Bearer '+token,
