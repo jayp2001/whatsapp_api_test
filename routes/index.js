@@ -111,7 +111,11 @@ router.post('/meta_wa_callbackurl', asyncHandler(async(req, res) => {
                        to:from,
                        text:{
                            body:"Hi.. I'm jay, your message is "+msg_body
-                       }
+                       },
+                       document: {
+                        link: "home/ubuntu/whatsapp_api_test/document_recipt/recipte_test.pdf",
+                        caption: "your-document-caption"
+                      }
                    },
                    headers:{
                         'Authorization': 'Bearer '+token,
